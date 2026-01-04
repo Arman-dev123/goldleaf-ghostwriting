@@ -1,3 +1,13 @@
+[build]
+  # 1. Point to the subfolder where your React app lives
+  base = "frontend/goldleaf-frontend"
+  
+  # 2. Command to build the React app
+  command = "npm run build"
+  
+  # 3. Where the final files end up (relative to the base folder)
+  publish = "build"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
