@@ -504,7 +504,14 @@ def schedule_meeting():
     except Exception as e:
         print(f"Error: {str(e)}")
         return jsonify({'error': 'An internal server error occurred'}), 500
-
+@app.route('/db-test', methods=['GET'])
+def db_test_route():
+    connection = get_db_connection()
+    if connection:
+        connection.close()
+        return jsonify({"db": "connected"}), 200
+    else:
+        return jsonify({"db": "failed"}), 500
 # Run app on Railway port
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
